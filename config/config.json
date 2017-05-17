@@ -1,14 +1,14 @@
 {
   "development": {
     "password": null,
-    "database": "blog2",
+    "database": "blog",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "blog2_test",
+    "database": "blog_test",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },
