@@ -1,14 +1,33 @@
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
-  var Comment = sequelize.define('comment', {
-    title: DataTypes.STRING,
-    body: DataTypes.TEXT
+  return(sequelize.define('comment', {
+    body: {
+      type:      DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Body is required'
+        }
+      }
+    },
+    author: {
+      type:      DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Author is required'
+        }
+      }
+    },
   }, {
+    defaultScope: {
+      order: [['createdAt', 'DESC']]
+    },
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.comment.belongsTo(models.post);
       }
     }
-  });
-  return Comment;
+  }));
 };

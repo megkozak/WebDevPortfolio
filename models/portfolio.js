@@ -1,5 +1,6 @@
+'use strict';
 module.exports = function(sequelize, DataTypes) {
-return(sequelize.define('post', {
+	return(sequelize.define('post', {
 		title: {
 			type:      DataTypes.STRING,
 			allowNull: false,
@@ -18,7 +19,7 @@ return(sequelize.define('post', {
 				}
 			}
 		},
-		author: {
+    author: {
 			type:      DataTypes.STRING,
 			allowNull: false,
 			validate: {
@@ -43,7 +44,7 @@ return(sequelize.define('post', {
 		},
 	  getterMethods: {
 			url: function() {
-				return(`/blog/${this.id}`);
+				return(`/portfolio/${this.id}`);
 			},
 			imageUrl: function() {
 				return(`/images/posts/${this.imageFilename}`);
@@ -59,14 +60,14 @@ return(sequelize.define('post', {
 			findById: function(Id) {
 				return(this.findOne({
 					where: {
-						id: Id
+						Id: Id
 					},
-					// include: [
-					// 	sequelize.models.comment
-					// ],
-					// order: [
-					// 	[sequelize.models.comment, 'createdAt', 'DESC']
-					// ]
+					include: [
+						sequelize.models.comment
+					],
+					order: [
+						[sequelize.models.comment, 'createdAt', 'DESC']
+					]
 				}));
 			}
     }
