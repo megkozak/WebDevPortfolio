@@ -55,10 +55,9 @@ router.get('/search', function(request, response) {
 router.post('/', function(request, response) {
 	Post.create({
 		title: request.body.title,
-		body:  request.body.body,
-		slug:  request.body.slug
+		body:  request.body.body
 	}).then(function(post) {
-		response.redirect(post.url);
+		response.redirect(`blog/${post.title}`);
 	});
 });
 
@@ -68,12 +67,8 @@ router.get('/new', function(request, response) {
 });
 
 // Show.
-router.get('/:slug', function(request, response) {
-	Post.findOne({
-		where: {
-			slug: request.params.slug
-		}
-	}).then(function(post) {
+router.get('/:iden', function(request, response) {
+	Post.findById(request.params.iden).then(function(post) {
 		response.render('blog/show', {
 			post: post
 		});
