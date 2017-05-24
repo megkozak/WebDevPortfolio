@@ -4,4 +4,18 @@ block body
 	h1 Favorite Projects
 	p Here are my Web Dev Creations!
 	p= sendThis
-	iframe(src="http://cats.com")
+	a(href="#myModal" data-toggle="modal" data-target="#myModal")
+		img.portfolio-pictures(src="images/snowboard.jpg")
+
+	#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+		.modal-dialog(role='document')
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') ×
+					h4#myModalLabel.modal-title Works
+				.modal-body
+					iframe.iframed-site(src="http://cats.com")
+					p Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet quam id dui posuere blandit. Pellentesque in ipsum id orci porta dapibus.
+					.modal-footer
+						button.btn.btn-default(type='button', data-dismiss='modal') Close

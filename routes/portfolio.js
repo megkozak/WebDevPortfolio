@@ -3,7 +3,7 @@ var router  = express.Router();
 
 router.get('/', function(request, response) {
 	response.render('portfolio/index', {
-		sendThis: 'HI'
+		sendThis: 'Check it out!'
 	});
 });
 
